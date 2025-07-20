@@ -1,1 +1,11 @@
+def quadratic_temperature(a, b, c, x):
+    return a * x**2 + b * x + c
+
+try:
+    with open("weather_input.txt", "r") as file:
+        a, b, c, x = map(float, file.readline().split())
+        temperature = quadratic_temperature(a, b, c, x)
+        print(f"Predicted temperature at hour {int(x)} is {temperature:.2f}°C")
+except Exception as e:
+    print("Error reading file:", e)
 
