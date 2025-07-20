@@ -1,0 +1,14 @@
+def quadratic_temperature(a, b, c, x):
+    return a * x**2 + b * x + c
+
+try:
+    with open("weather_input.txt", "r") as file:
+        for line_num, line in enumerate(file, start=1):
+            try:
+                a, b, c, x = map(float, line.split())
+                temperature = quadratic_temperature(a, b, c, x)
+                print(f"[Line {line_num}] Temp at hour {int(x)} is {temperature:.2f}°C")
+            except ValueError:
+                print(f"[Line {line_num}] Skipping invalid input.")
+except FileNotFoundError:
+    print("weather_input.txt not found.")
